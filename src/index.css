@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@200..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent-red: #ff4444;
+    --background-dark: #000000;
+    --background-light: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Ensure proper stacking context */
+  #root {
+    isolation: isolate;
+  }
+
+  /* Root wrapper styles */
+  .root-wrapper {
+    min-height: 100vh;
+    background-color: var(--background-dark);
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--background-dark);
+  }
+
+  body {
+    @apply bg-black text-white font-sans;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: black;
+    color: white;
+  }
+
+  /* Account for fixed header */
+  main, .main-content {
+    @apply pt-20; /* Adjust based on header height */
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Form Elements */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    @apply bg-[#1a1a1a] text-white border border-zinc-800 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#ff4444]/50 focus:border-transparent transition-all duration-200;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-zinc-500;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-[#ff4444] text-white hover:bg-[#ff6666];
+  }
+
+  .btn-secondary {
+    @apply bg-[#1a1a1a] text-white border border-zinc-800 hover:border-[#ff4444]/40 hover:bg-[#222];
+  }
+
+  /* Modern Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 68, 68, 0.3);
+  }
+}
+
+.font-display {
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Network Background Animation */
+.network-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(255, 68, 68, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba(255, 68, 68, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(255, 68, 68, 0.1) 0%, transparent 50%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Content z-index */
+.z-content {
+  z-index: 1;
+}
+
+/* Z-index layers */
+.z-background { z-index: 0; }
+.z-header { z-index: 50; }
+.z-modal { z-index: 100; }
+
+/* Animations */
+@keyframes moveBackground {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
+
+/* Scroll Animations */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 76, 76, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 76, 76, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 76, 76, 0.3);
+  }
+}
+
+@keyframes pianoBounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes scrollGallery {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Custom classes */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.animate-glow {
+  animation: glow 2s infinite;
+}
+
+.animate-scroll-gallery {
+  animation: scrollGallery 30s linear infinite;
+}
+
+.animate-scroll-gallery:hover {
+  animation-play-state: paused;
+}
+
+/* Hover effects */
+.hover-accent {
+  @apply transition-colors duration-200;
+}
+
+.hover-accent:hover {
+  color: var(--accent-red);
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-red-500;
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-[#ff4444] text-white hover:bg-[#ff6666];
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+}
+
+@layer utilities {
+  @keyframes scroll-gallery {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll-gallery {
+    animation: scroll-gallery 40s linear infinite;
+  }
+}
