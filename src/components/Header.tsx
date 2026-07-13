@@ -138,7 +138,7 @@ export const Header = () => {
             to="/" 
             className="shrink-0 font-sans text-lg font-light tracking-wider hover:text-[#ff4444] transition-colors duration-200"
           >
-            citadelle.city
+            Citadelle.build
           </Link>
 
           {/* Navigation and Auth */}
