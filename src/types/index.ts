@@ -33,7 +33,7 @@ export interface EscrowProject {
   description: string;
   status: 'active' | 'completed' | 'failed';
   tokenization: {
-    type: 'citadelle' | 'fracta';
+    type: 'citadel' | 'fracta';
     totalTokens: number;
     tokenRepresentation: string;
     platform: string;
