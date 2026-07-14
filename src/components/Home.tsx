@@ -91,6 +91,20 @@ export const Home = ({ cities }: HomeProps) => {
             </div>
           </div>
         </div>
+
+        {/* Hot Properties Section */}
+        <div className="py-16">
+          <h2 className="text-2xl font-bold text-white mb-8 font-display">Hot Properties</h2>
+          <div className="relative overflow-hidden">
+            <div className="flex animate-scroll-gallery">
+              {[...hotProperties, ...hotProperties].map((property, index) => (
+                <div key={index} className="flex-shrink-0 w-80 mx-4">
+                  <PropertyCard property={property} onCardClick={handleOpenModal} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
       <PropertyDetailModal property={selectedProperty} isOpen={!!selectedProperty} onClose={handleCloseModal} />
     </>
