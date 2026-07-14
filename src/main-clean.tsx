@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 
-// ONLY the new components we built today
-import { Header } from './components/Header'
+// ONLY the new components we built today - using clean header
+import { Header } from './components/Header-Clean'
 import { DevelopmentHero } from './components/DevelopmentHero'
 import { HowItWorks } from './components/HowItWorks'
 import { Developments } from './components/Developments'
