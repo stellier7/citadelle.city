@@ -10,11 +10,12 @@ import { PropertyPage } from './components/PropertyPage';
 import { EscrowProjectPage } from './components/EscrowProjectPage';
 import { Developments } from './components/Developments';
 import { DevelopmentDetail } from './components/DevelopmentDetail';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { cities, escrowProjects } from './data';
 
 function App() {
   return (
-    <>
+    <ErrorBoundary>
       <Toaster position="bottom-center" />
       <Header />
       <main className="bg-black text-white pt-16">
@@ -30,7 +31,7 @@ function App() {
           <Route path="/escrow/:projectId" element={<EscrowProjectPage escrowProjects={escrowProjects} />} />
         </Routes>
       </main>
-    </>
+    </ErrorBoundary>
   );
 }
 
