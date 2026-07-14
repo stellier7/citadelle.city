@@ -14,8 +14,16 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { cities, escrowProjects } from './data';
 
 function App() {
+  // DEBUG MODE - Testing if React loads at all
+  console.log('🚀 APP COMPONENT LOADED');
+  
   return (
     <ErrorBoundary>
+      {/* Debug banner */}
+      <div className="fixed top-0 left-0 right-0 bg-green-500 text-black p-2 text-center font-bold z-50">
+        ✅ REACT IS WORKING - App Component Loaded Successfully
+      </div>
+      
       <Toaster position="bottom-center" />
       <Header />
       <main className="bg-black text-white pt-16">
