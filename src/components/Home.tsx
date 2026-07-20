@@ -4,6 +4,7 @@ import { CityCard } from './CityCard';
 import { PropertyCard } from './PropertyCard';
 import { PropertyDetailModal } from './PropertyDetailModal';
 import { useResponsiveSlice } from '../hooks/useResponsiveSlice';
+import { DevelopmentsSection } from './DevelopmentsSection';
 import { Link } from 'react-router-dom';
 
 interface HomeProps {
@@ -74,7 +75,12 @@ export const Home = ({ cities }: HomeProps) => {
             </div>
           </div>
         </div>
+      </div>
 
+      {/* NEW: Developments Section */}
+      <DevelopmentsSection />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 main-content">
         {/* Cities Grid */}
         <div className="py-12">
           <h2 className="text-2xl font-bold text-white mb-6 font-display">Cities</h2>

@@ -8,6 +8,8 @@ import { CityView } from './components/CityView';
 import { GetInEarly } from './components/GetInEarly';
 import { PropertyPage } from './components/PropertyPage';
 import { EscrowProjectPage } from './components/EscrowProjectPage';
+import { Developments } from './components/Developments';
+import { DevelopmentDetail } from './components/DevelopmentDetail';
 import { cities, escrowProjects } from './data';
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
       <main className="bg-black text-white pt-20">
         <Routes>
           <Route path="/" element={<Home cities={cities} />} />
+          <Route path="/developments" element={<Developments />} />
+          <Route path="/developments/:projectId" element={<DevelopmentDetail />} />
           <Route path="/city/:cityId" element={<CityView cities={cities} escrowProjects={escrowProjects} />} />
           <Route path="/property/:propertyId" element={<PropertyPage cities={cities} />} />
           <Route path="/get-in-early" element={<GetInEarly escrowProjects={escrowProjects} />} />
