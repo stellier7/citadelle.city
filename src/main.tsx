@@ -5,8 +5,6 @@ import './index.css'
 import App from './App'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthProvider } from './contexts/AuthContext'
-import { WagmiProvider } from 'wagmi'
-import { config } from './config/wagmi'
 
 // Create a client
 const queryClient = new QueryClient()
@@ -45,8 +43,10 @@ const renderError = (message: string, details?: string[]) => {
   )
 }
 
-// Function to render app without wagmi (fallback)
-const renderAppWithoutWagmi = () => {
+
+try {
+  console.log('Initializing app...')
+  
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
       <div className="root-wrapper relative min-h-screen bg-black">
@@ -60,43 +60,13 @@ const renderAppWithoutWagmi = () => {
       </div>
     </React.StrictMode>
   )
-}
-
-try {
-  console.log('Initializing app...')
-  
-  ReactDOM.createRoot(rootElement).render(
-    <React.StrictMode>
-      {/* Root styles wrapper to ensure backgrounds are visible */}
-      <div className="root-wrapper relative min-h-screen bg-black">
-        <WagmiProvider config={config}>
-          <QueryClientProvider client={queryClient}>
-            <BrowserRouter future={{ v7_startTransition: true }}>
-              <AuthProvider>
-                <App />
-              </AuthProvider>
-            </BrowserRouter>
-          </QueryClientProvider>
-        </WagmiProvider>
-      </div>
-    </React.StrictMode>
-  )
   
   console.log('App initialized successfully')
 } catch (error) {
-  console.error('Failed to initialize app with wagmi:', error)
-  console.log('Falling back to app without wagmi...')
-  
-  // Fallback to app without wagmi
-  try {
-    renderAppWithoutWagmi()
-    console.log('App initialized without wagmi')
-  } catch (fallbackError) {
-    console.error('Failed to initialize app even without wagmi:', fallbackError)
-    if (fallbackError instanceof Error) {
-      renderError(fallbackError.message)
-    } else {
-      renderError('An unexpected error occurred while initializing the application.')
-    }
+  console.error('Failed to initialize app:', error)
+  if (error instanceof Error) {
+    renderError(error.message)
+  } else {
+    renderError('An unexpected error occurred while initializing the application.')
   }
 }
