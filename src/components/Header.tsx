@@ -34,10 +34,7 @@ export const Header = () => {
             <div className="w-10 h-10 bg-gradient-to-br from-[#ff4444] to-[#cc0000] rounded-lg flex items-center justify-center shadow-lg shadow-red-500/20">
               <span className="text-white font-bold text-xl">C</span>
             </div>
-            <div className="flex flex-col">
-              <span className="text-white font-bold text-lg leading-none">Citadelle</span>
-              <span className="text-[#ff4444] text-xs leading-none">City</span>
-            </div>
+            <span className="text-white font-bold text-lg">citadel.build</span>
           </Link>
 
           {/* Desktop Navigation */}
