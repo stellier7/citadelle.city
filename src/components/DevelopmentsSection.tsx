@@ -11,17 +11,8 @@ export const DevelopmentsSection = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-[#ff4444]/10 border border-[#ff4444]/30 rounded-full px-6 py-2 mb-8">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff4444] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff4444]"></span>
-            </span>
-            <span className="text-[#ff4444] font-semibold text-sm uppercase tracking-wider">New Opportunity</span>
-          </div>
-
           {/* Main headline */}
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 font-display">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 font-display pt-8">
             Build <span className="text-[#ff4444]">Citadel</span> Together
           </h2>
 
