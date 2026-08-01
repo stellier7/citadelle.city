@@ -1,6 +1,25 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 export const DevelopmentsSection = () => {
+  const [displayedText, setDisplayedText] = useState('');
+  const fullText = 'citadel.build';
+  const typingSpeed = 150; // milliseconds per character
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, typingSpeed);
+
+    return () => clearInterval(typingInterval);
+  }, []);
+
   return (
     <div className="relative overflow-hidden bg-black border-t border-b border-[#ff4444]/20 py-20">
       {/* Animated background elements - matching main page style */}
@@ -11,9 +30,10 @@ export const DevelopmentsSection = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          {/* Main headline */}
+          {/* Main headline with typing animation */}
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 font-display pt-8">
-            Build <span className="text-[#ff4444]">Citadel</span> Together
+            <span className="text-[#ff4444]">{displayedText}</span>
+            <span className="text-[#ff4444] animate-pulse">|</span>
           </h2>
 
           <p className="text-xl sm:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
